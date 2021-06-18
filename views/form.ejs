@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title>User API</title>
+    <script
+      src="https://kit.fontawesome.com/3fd0eea9c6.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./../../styles.css" />
+  </head>
+  <body>
+    <div class="">
+      <div class="row">
+        <div class="col-lg-4 leftBox">
+          <form class="item" action="/user" method="POST">
+            <input
+              placeholder="Full Name"
+              type="text"
+              name="name"
+              autocomplete="off"
+              autofocus
+            />
+            <input
+              placeholder="Email Address"
+              type="email"
+              name="email"
+              autocomplete="off"
+            />
+            <input
+              placeholder="Phone Number"
+              type="tel"
+              name="phone"
+              autocomplete="off"
+            />
+            <textarea
+              placeholder="Message"
+              rows="2"
+              cols="5"
+              type="text"
+              name="message"
+              autocomplete="off"
+            ></textarea>
+            <button type="submit">Add</button>
+          </form>
+        </div>
+        <div class="col-lg-8 rightBox leftBox">
+          <h1>Add A new User</h1>
+          <table class="fixed_headers">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Message</th>
+                <th>operations</th>
+              </tr>
+            </thead>
+            <tbody>
+              <%userData.forEach((user)=>{%>
+              <tr>
+                <td><%=user.Name%></td>
+                <td><%=user.Email%></td>
+                <td><%=user.Phone%></td>
+                <td><%=user.Message%></td>
+                <td>
+                  <button value="<%=user._id%>" name="getId">
+                    <a href="/user/<%= user._id %>"
+                      ><i class="fas fa-eye"></i
+                    ></a>
+                  </button>
+                </td>
+              </tr>
+              <%})%>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <script>
+      function getId(objBtn) {
+        alert(objBtn.value);
+        return objBtn.value;
+      }
+    </script>
+  </body>
+  <footer>Copyright Tarun</footer>
+</html>
